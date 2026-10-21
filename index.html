@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shani Design Studio | شانی ڈیزائن اسٹوڈیو - We Design Your Ideas</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#ff2a7a',
+              rose: '#f43f5e',
+              deep: '#e11d68'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-slate-900 min-h-screen flex flex-col selection:bg-pink-500 selection:text-white">
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 w-full border-b border-slate-100 bg-white/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Name -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-pink-500/20 p-0.5 bg-white shadow-sm">
+          <img src="assets/images/logo.png" alt="Shani Design Studio Logo" class="w-full h-full object-cover rounded-full">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg md:text-xl font-extrabold tracking-tight text-slate-950" data-i18n="siteTitle">
+              شانی ڈیزائن اسٹوڈیو
+            </span>
+          </div>
+          <span class="text-xs text-slate-500 block font-medium" data-i18n="siteTagline">
+            We Design Your Ideas
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links (Clean, No Phone Number) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#" class="text-pink-600 font-bold transition-colors">Home</a>
+        <a href="#servicesExplorerArea" class="hover:text-slate-950 transition-colors">Categories</a>
+        <a href="#processSection" class="hover:text-slate-950 transition-colors">Process</a>
+        <a href="#whyUsSection" class="hover:text-slate-950 transition-colors">Why Us</a>
+      </nav>
+
+      <!-- Right Header Actions (Language Switcher + Add to Cart Button) -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Button -->
+        <button 
+          onclick="toggleLanguage()" 
+          class="flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs md:text-sm font-bold text-slate-700 transition-all shadow-sm active:scale-95"
+          title="Switch Language / زبان تبدیل کریں"
+        >
+          <svg class="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span data-i18n="switchLanguage">English</span>
+        </button>
+
+        <!-- Add to Cart / Inquiry Cart Button (Replaces WA button on top right) -->
+        <button 
+          onclick="openOrderModalFromBasket()" 
+          class="btn-pink-pill px-4 sm:px-5 py-2 rounded-full text-xs md:text-sm font-bold flex items-center gap-2"
+          title="View Cart / Selected Services"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span data-i18n="cartBtn">کارٹ</span>
+          <span id="headerCartCount" class="px-2 py-0.5 rounded-full bg-white text-pink-600 text-[11px] font-black shadow-sm">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION (CLEAN & NO OPEN PHONE NUMBER) ==================== -->
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-20 overflow-hidden bg-white">
+    
+    <!-- Static Radiant Pink Glow -->
+    <div class="hero-glow-blob"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <!-- Studio Monogram Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-pink-200 bg-white shadow-sm text-xs md:text-sm font-bold text-pink-600 mb-6">
+        <span>🎨 Shani Design Studio • Official Portfolio</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-950 mb-6 leading-[1.25]" data-i18n="heroTitle">
+        آپ کے برانڈ اور کاروبار کے لیے <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-500 to-pink-500">پیشہ ورانہ ڈیزائننگ سروسز</span>
+      </h1>
+
+      <!-- Subtitle Description -->
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-normal" data-i18n="heroDesc">
+        لوگو، سوشل میڈیا پوسٹس، ریسٹورنٹ مینو، کاروباری برانڈنگ، شادی کارڈز اور تمام قسم کے گرافک ڈیزائن۔ اپنی مطلوبہ سروس منتخب کریں اور باآسانی آرڈر بک کریں۔
+      </p>
+
+      <!-- Center Action Buttons (Clean & Professional) -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a 
+          href="#servicesExplorerArea" 
+          class="btn-pink-pill px-8 py-3.5 rounded-full font-bold text-sm md:text-base flex items-center gap-2.5"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span data-i18n="heroExploreBtn">سروسز منتخب کریں</span>
+        </a>
+
+        <a 
+          href="#whyUsSection" 
+          class="btn-white-pill px-8 py-3.5 rounded-full font-bold text-sm md:text-base flex items-center gap-2"
+        >
+          <span data-i18n="whyChooseUs">ہمیں کیوں منتخب کریں؟</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CATEGORIES & SERVICES EXPLORER ==================== -->
+  <section id="servicesExplorerArea" class="py-14 bg-[#fafbfd] border-t border-slate-100 flex-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Search & Quick Bar -->
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          
+          <!-- Section Title (Dynamic Header populated via app.js) -->
+          <div id="viewHeaderContainer" class="flex-1">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Live Search Bar -->
+          <div class="relative w-full md:w-80">
+            <input 
+              type="text" 
+              id="serviceSearchInput" 
+              data-i18n-placeholder="searchPlaceholder"
+              placeholder="کوئی بھی سروس تلاش کریں..." 
+              class="w-full pl-11 pr-12 py-3 rounded-full bg-white border border-slate-200 focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 text-slate-900 placeholder-slate-400 text-xs md:text-sm outline-none transition-all shadow-sm"
+            >
+            <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Dynamic Content Container (Shows 11 Categories by default, NOT exposing all 117 services at once) -->
+      <div id="contentContainer">
+        <!-- Rendered dynamically by app.js: 
+             1. 11 Category Cards (Default)
+             2. Or Selected Category's Services
+             3. Or Search Results 
+        -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CUSTOMER TRUST & TRANSPARENT PROCESS SECTION ==================== -->
+  <section id="processSection" class="py-16 bg-[#fafbfd] border-t border-slate-150">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/70 text-emerald-700 text-xs font-bold mb-3">
+          Client Trust & Workflow
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-950 mb-3" data-i18n="howWeWorkHeading">
+          کام کرنے کا آسان اور شفاف طریقہ
+        </h2>
+        <p class="text-slate-500 text-xs md:text-sm leading-relaxed" data-i18n="howWeWorkSubheading">
+          صرف 4 آسان مراحل میں اپنا مطلوبہ ڈیزائن حاصل کریں
+        </p>
+      </div>
+
+      <!-- 4 Step Process Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative rtl:text-right ltr:text-left">
+          <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-extrabold text-sm flex items-center justify-center mb-4 border border-pink-100">
+            01
+          </div>
+          <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1.5" data-i18n="step1Title">1. سروس کا انتخاب</h4>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="step1Desc">کیٹیگریز میں سے اپنی مطلوبہ سروس منتخب کریں۔</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative rtl:text-right ltr:text-left">
+          <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-extrabold text-sm flex items-center justify-center mb-4 border border-pink-100">
+            02
+          </div>
+          <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1.5" data-i18n="step2Title">2. تفصیلات کا اندراج</h4>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="step2Desc">اپنا نام اور کام کے حوالے سے ضروری ہدایات شیئر کریں۔</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative rtl:text-right ltr:text-left">
+          <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-extrabold text-sm flex items-center justify-center mb-4 border border-pink-100">
+            03
+          </div>
+          <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1.5" data-i18n="step3Title">3. ڈیزائن کا معائنہ و ترامیم</h4>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="step3Desc">ہم آپ کو ڈیزائن کا سیمپل دکھائیں گے اور آپ کی مرضی کے مطابق تبدیلی کریں گے۔</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm relative rtl:text-right ltr:text-left">
+          <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 font-extrabold text-sm flex items-center justify-center mb-4 border border-pink-100">
+            04
+          </div>
+          <h4 class="text-sm md:text-base font-bold text-slate-900 mb-1.5" data-i18n="step4Title">4. فائنل ہائی کوالٹی فائلز</h4>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="step4Desc">پرنٹ اور سوشل میڈیا کے لیے ہائی ریزولوشن فائلز حاصل کریں۔</p>
+        </div>
+
+      </div>
+
+      <!-- Trust Badges Bar -->
+      <div class="p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+          
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-3 border border-emerald-100">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1" data-i18n="trustBadge1Title">ہائی ریزولوشن پرنٹ ریڈی</h4>
+            <p class="text-xs text-slate-500 max-w-xs" data-i18n="trustBadge1Desc">تمام ڈیزائنز HD اور پرنٹ کے لیے مکمل تیار ملیں گے۔</p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center font-bold mb-3 border border-pink-100">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+            </div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1" data-i18n="trustBadge2Title">100% اطمینان کی گارنٹی</h4>
+            <p class="text-xs text-slate-500 max-w-xs" data-i18n="trustBadge2Desc">جب تک آپ مکمل مطمئن نہ ہوں کام فائنل نہیں ہوتا۔</p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold mb-3 border border-indigo-100">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <h4 class="text-sm font-bold text-slate-900 mb-1" data-i18n="trustBadge3Title">محفوظ اور نجی ریکارڈ</h4>
+            <p class="text-xs text-slate-500 max-w-xs" data-i18n="trustBadge3Desc">آپ کا بزنس ڈیٹا، تصاویر اور فائلز مکمل محفوظ رہیں گی۔</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== WHY CHOOSE US SECTION ==================== -->
+  <section id="whyUsSection" class="py-16 bg-white border-t border-slate-150">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-100/70 text-pink-700 text-xs font-bold mb-3">
+          Our Core Strengths
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-950 mb-3" data-i18n="whyChooseUs">
+          ہمیں کیوں منتخب کریں؟
+        </h2>
+        <p class="text-slate-500 text-xs md:text-sm leading-relaxed" data-i18n="whyChooseUsDesc">
+          شانی ڈیزائن اسٹوڈیو آپ کے کاروبار کو مارکیٹ میں نمایاں اور پُرکشش بنانے کے لیے پرعزم ہے۔
+        </p>
+      </div>
+
+      <!-- 4 Core Feature Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1 -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-200 transition-colors rtl:text-right ltr:text-left shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center font-bold mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-1.5" data-i18n="feature1Title">100% کسٹم ڈیزائن</h3>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="feature1Desc">ہر کلائنٹ کے لیے بالکل نیا، منفرد اور تخلیقی انداز، کوئی کاپی پیسٹ نہیں۔</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-200 transition-colors rtl:text-right ltr:text-left shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-1.5" data-i18n="feature2Title">تیز ترین ڈیلیوری</h3>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="feature2Desc">مقررہ وقت پر اعلیٰ معیار کا کام بغیر کسی غیر ضروری تاخیر کے۔</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-200 transition-colors rtl:text-right ltr:text-left shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-1.5" data-i18n="feature3Title">لامحدود ترامیم</h3>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="feature3Desc">آپ کے مکمل اطمینان تک ڈیزائن کے رنگ، فونٹ اور لے آؤٹ میں تبدیلیاں۔</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-pink-200 transition-colors rtl:text-right ltr:text-left shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center font-bold mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="text-base font-extrabold text-slate-900 mb-1.5" data-i18n="feature4Title">فوری اور آسان رابطہ</h3>
+          <p class="text-xs text-slate-500 leading-relaxed" data-i18n="feature4Desc">آسان رابطہ، دوستانہ بات چیت اور کام کے دوران مسلسل لائیو اپ ڈیٹس۔</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FLOATING SELECTED SERVICES BAR ==================== -->
+  <div 
+    id="floatingInquiryBar" 
+    class="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 transition-all duration-300 transform translate-y-32 opacity-0 pointer-events-none w-full max-w-lg px-4"
+  >
+    <div class="rounded-full p-2.5 sm:p-3 shadow-2xl border border-pink-200 bg-white/95 backdrop-blur-md flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 pr-2">
+        <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center font-bold text-white shadow-md shadow-pink-600/30">
+          <span id="selectedItemsCount">0</span>
+        </div>
+        <div>
+          <span class="text-xs sm:text-sm font-extrabold text-slate-900 block" data-i18n="selectedCount">سروسز منتخب ہو گئیں</span>
+          <span class="text-[11px] text-pink-600 font-bold block" data-i18n="noPriceNote">قیمت آرڈر کے بعد طے ہوگی</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button 
+          onclick="clearAllSelections()" 
+          class="p-2 rounded-full text-slate-400 hover:text-rose-500 hover:bg-slate-100 transition-colors"
+          title="Clear"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+        </button>
+
+        <button 
+          onclick="openOrderModalFromBasket()" 
+          class="btn-pink-pill px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm flex items-center gap-2"
+        >
+          <span data-i18n="proceedToWhatsApp">آرڈر مکمل کریں</span>
+          <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 404 & OFFLINE SWINGING LAMP ANIMATED OVERLAY ==================== -->
+  <div id="error404Overlay" class="fixed inset-0 z-[60] bg-white flex flex-col items-center justify-center p-4 transition-all duration-300 hidden">
+    <div class="w-full max-w-lg mx-auto text-center">
+      
+      <!-- Animated Swinging Lamp SVG Scene (Exact match to uploaded screenshots) -->
+      <div class="lamp-scene-container mb-6">
+        <svg viewBox="0 0 680 340" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- ClipPath for the swinging spotlight beam -->
+            <clipPath id="spotlightBeamClip">
+              <g class="spotlight-motion">
+                <!-- Smooth tall rounded spotlight shape covering full height of 404 numbers -->
+                <ellipse cx="440" cy="195" rx="85" ry="120" transform="rotate(12 440 195)" />
+              </g>
+            </clipPath>
+          </defs>
+
+          <!-- Table / Ground Line -->
+          <line x1="50" y1="260" x2="630" y2="260" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- BASE 404 NUMBERS (Dark Navy Unlit) -->
+          <text x="440" y="255" text-anchor="middle" font-size="145" font-weight="900" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" fill="#36394c" letter-spacing="4">404</text>
+
+          <!-- ILLUMINATED 404 NUMBERS (Pure White with Crisp Light-Gray Outline, Clipped to Spotlight) -->
+          <g clip-path="url(#spotlightBeamClip)">
+            <!-- Table highlight line under light -->
+            <line x1="50" y1="260" x2="630" y2="260" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round" />
+            <!-- White 404 Text -->
+            <text x="440" y="255" text-anchor="middle" font-size="145" font-weight="900" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" letter-spacing="4">404</text>
+          </g>
+
+          <!-- STATIC LAMP STAND & BASE -->
+          <!-- Dome Base sitting on the table line -->
+          <path d="M 85 260 A 48 38 0 0 1 181 260 Z" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linejoin="round" />
+
+          <!-- Vertical Stem -->
+          <line x1="133" y1="222" x2="133" y2="105" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- Center Pivot Joint -->
+          <circle cx="133" cy="148" r="9" fill="#36394c" />
+
+          <!-- Diagonal Crossbar -->
+          <line x1="80" y1="201" x2="208" y2="73" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- Upper Pivot Joint -->
+          <circle cx="208" cy="73" r="9" fill="#36394c" />
+
+          <!-- SWINGING LAMP HEAD (Rotates naturally from Upper Pivot 208, 73) -->
+          <g class="lamp-head-motion">
+            <!-- Connecting neck from upper pivot (208, 73) -->
+            <line x1="208" y1="73" x2="222" y2="87" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+            <!-- Lamp Shade Top Cap Rims -->
+            <line x1="214" y1="81" x2="230" y2="93" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+            <line x1="210" y1="86" x2="234" y2="98" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+            <!-- Trapezoid Bell Shade (Pointing Down & Right towards 404) -->
+            <polygon points="213,91 231,104 266,145 238,168" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linejoin="round" />
+
+            <!-- Shade Bottom Opening Rim -->
+            <line x1="238" y1="168" x2="266" y2="145" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+            <!-- Light Bulb peeking out from the opening -->
+            <path d="M 246 162 A 10 10 0 0 0 258 152" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Caption directly under table (Exact match to screenshots) -->
+      <h3 class="text-base sm:text-lg font-medium text-slate-500 mb-2 font-['Outfit']" id="errorOverlayDesc" data-i18n="error404Desc">
+        We can`t find page you are looking for
+      </h3>
+
+      <!-- Detail Info -->
+      <p class="text-xs text-slate-400 mb-6" id="errorOverlayDetail">
+        The requested URL was not found on this website, or your network connection was lost.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center justify-center gap-3">
+        <button 
+          onclick="hideErrorOverlay()" 
+          class="btn-pink-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md shadow-pink-500/20"
+        >
+          <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span data-i18n="errorHomeBtn">Back to Home</span>
+        </button>
+
+        <button 
+          onclick="checkNetworkAndRetry()" 
+          class="btn-white-pill px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span data-i18n="errorRetryBtn">Retry</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== LANGUAGE SELECTION POPUP MODAL (SHOWS ON WEBSITE OPEN) ==================== -->
+  <div id="languageModal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md">
+    <div class="modal-content w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-2xl relative text-center">
+      
+      <!-- Studio Logo in Modal -->
+      <div class="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden border-2 border-pink-500/20 p-0.5 bg-white shadow-md">
+        <img src="assets/images/logo.png" alt="Shani Design Studio" class="w-full h-full object-cover rounded-full">
+      </div>
+
+      <h3 class="text-xl md:text-2xl font-black text-slate-950 mb-2">
+        Choose Language / زبان کا انتخاب کریں
+      </h3>
+      <p class="text-xs md:text-sm text-slate-500 mb-6 leading-relaxed">
+        Welcome to Shani Design Studio! Please select your language to enter website:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- English Option (Built-in default) -->
+        <button 
+          onclick="selectLanguage('en')" 
+          class="p-5 rounded-2xl bg-slate-50 hover:bg-pink-50/50 border-2 border-slate-200 hover:border-pink-500 text-left transition-all group flex flex-col justify-between shadow-sm cursor-pointer"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🌐</span>
+            <span class="w-6 h-6 rounded-full bg-pink-600 text-white flex items-center justify-center text-xs font-bold">✓</span>
+          </div>
+          <div>
+            <span class="text-lg font-bold text-slate-900 block mb-0.5">English</span>
+            <span class="text-xs text-slate-500">Built-in & Global</span>
+          </div>
+        </button>
+
+        <!-- Urdu Option -->
+        <button 
+          onclick="selectLanguage('ur')" 
+          class="p-5 rounded-2xl bg-slate-50 hover:bg-pink-50/50 border-2 border-slate-200 hover:border-pink-500 text-right transition-all group flex flex-col justify-between shadow-sm cursor-pointer"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🇵🇰</span>
+            <span class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold group-hover:bg-pink-600 group-hover:text-white transition-colors">✓</span>
+          </div>
+          <div>
+            <span class="text-lg font-bold text-slate-900 block mb-0.5">اردو</span>
+            <span class="text-xs text-slate-500">پاکستانی کلائنٹس کے لیے</span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== HIRE / ORDER MODAL (NAME & NOTES ONLY - NO PHONE, NO DEADLINE) ==================== -->
+  <div id="orderModal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
+    <div class="modal-content w-full max-w-lg bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-2xl relative my-8 rtl:text-right ltr:text-left">
+      
+      <!-- Close Button -->
+      <button 
+        onclick="closeOrderModal()" 
+        class="absolute top-5 rtl:left-5 ltr:right-5 text-slate-400 hover:text-slate-900 p-2 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-100/70 text-pink-700 text-xs font-bold mb-2">
+          <span>Order Confirmation</span>
+        </div>
+        <h3 class="text-xl md:text-2xl font-black text-slate-950" data-i18n="quickHireTitle">
+          سروس آرڈر اور کوٹیشن
+        </h3>
+        <p class="text-xs md:text-sm text-slate-500 mt-1" data-i18n="quickHireSubtitle">
+          اپنا نام اور کام کی تفصیل درج کر کے آرڈر کنفرم کریں
+        </p>
+      </div>
+
+      <!-- Selected Services Chips Container -->
+      <div class="mb-5">
+        <label class="block text-xs font-bold text-slate-700 mb-2" data-i18n="selectedServicesLabel">
+          منتخب شدہ سروسز:
+        </label>
+        <div class="flex flex-wrap gap-2 max-h-32 overflow-y-auto p-3 rounded-2xl bg-slate-50 border border-slate-200" id="modalSelectedChips">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Order Form (Minimalist: Name and Notes only) -->
+      <form id="orderForm" class="space-y-4">
+        
+        <!-- Client Name -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="nameLabel">
+            آپ کا نام <span class="text-rose-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="clientName" 
+            required 
+            data-i18n-placeholder="namePlaceholder"
+            placeholder="اپنا نام درج کریں"
+            class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-slate-900 text-xs md:text-sm outline-none transition-all"
+          >
+        </div>
+
+        <!-- Additional Notes / Brief -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1.5" data-i18n="notesLabel">
+            اضافی تفصیلات / ڈیمانڈز (نوٹ)
+          </label>
+          <textarea 
+            id="clientNotes" 
+            rows="3" 
+            data-i18n-placeholder="notesPlaceholder"
+            placeholder="ڈیزائن کے حوالے سے اپنی ضروریات، ٹیکسٹ، رنگ یا ہدایات یہاں لکھیں..."
+            class="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-200 focus:border-pink-500 focus:ring-2 focus:ring-pink-500/20 text-slate-900 text-xs md:text-sm outline-none transition-all"
+          ></textarea>
+        </div>
+
+        <!-- Price notice banner -->
+        <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs leading-relaxed" data-i18n="noPriceNote">
+          💡 نوٹ: کام کی قیمت اور تمام تفصیلات آرڈر کے بعد طے کی جائیں گی۔
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit"
+          class="w-full py-3.5 px-4 rounded-full bg-pink-600 hover:bg-pink-700 active:scale-95 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-pink-600/30 transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span data-i18n="sendOrderBtn">آرڈر کنفرم کریں</span>
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOMER SATISFACTION / HAPPY NOTES MODAL ==================== -->
+  <div id="satisfactionModal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md overflow-y-auto">
+    <div class="modal-content w-full max-w-md bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl relative text-center my-8">
+      
+      <!-- Close Button -->
+      <button 
+        onclick="closeSatisfactionModal()" 
+        class="absolute top-5 rtl:left-5 ltr:right-5 text-slate-400 hover:text-slate-900 p-2 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Celebration Icon -->
+      <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-emerald-50 border-2 border-emerald-200 text-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/10">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+      </div>
+
+      <!-- Personalized Greeting Badge -->
+      <span id="satisfactionClientName" class="text-xs font-bold px-3 py-1 rounded-full bg-pink-50 text-pink-600 border border-pink-100 mb-2 inline-block"></span>
+
+      <!-- Title & Subtitle -->
+      <h3 class="text-xl sm:text-2xl font-black text-slate-950 mb-2" data-i18n="satisfactionTitle">
+        شکریہ! آرڈر کامیابی سے بھیج دیا گیا 🎉
+      </h3>
+      <p class="text-xs sm:text-sm font-bold text-slate-700 mb-2" data-i18n="satisfactionSubtitle">
+        شانی ڈیزائن اسٹوڈیو پر اعتماد کرنے کا بہت شکریہ!
+      </p>
+      <p class="text-xs text-slate-500 leading-relaxed mb-6" data-i18n="satisfactionMsg">
+        ہم واٹس ایپ پر آپ کا پیغام دیکھ کر فوری طور پر مناسب ترین ریٹ اور کام کا طریقہ کار شیئر کریں گے۔
+      </p>
+
+      <!-- Inspiring Happy Note Card (One memorable, heartfelt message) -->
+      <div class="p-5 rounded-2xl bg-pink-50/70 border border-pink-200/90 mb-7 text-center relative shadow-sm">
+        <span class="text-2xl text-pink-400 block mb-1 font-serif">“</span>
+        <p class="text-xs sm:text-sm font-semibold text-slate-800 leading-relaxed italic" data-i18n="satisfactionHappyQuote">
+          Every great design begins with a conversation. Your idea is truly special to us, and we are excited to turn it into something extraordinary!
+        </p>
+        <span class="text-[11px] font-bold text-pink-600 block mt-3" data-i18n="satisfactionQuoteAuthor">
+          — Shani Design Studio • We Design Your Ideas
+        </span>
+      </div>
+
+      <!-- Got It / Close Button -->
+      <button 
+        onclick="closeSatisfactionModal()" 
+        class="w-full btn-pink-pill py-3 px-5 rounded-full text-xs sm:text-sm font-bold shadow-md shadow-pink-500/25 flex items-center justify-center gap-2"
+      >
+        <span data-i18n="satisfactionCloseBtn">بہترین! مزید سروسز دیکھیں</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER WITH LUMINOUS PINK MIXED BALL THEME (EXACT REFERENCE MATCH) ==================== -->
+  <footer class="relative overflow-hidden bg-white border-t border-slate-100 pt-16 pb-8 mt-auto">
+    
+    <!-- Luminous Radiant Pink Mixed Ball Glow (From Reference UI) -->
+    <div class="footer-glow-ball"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Center Callout with Pink Glow -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        
+        <!-- Studio Logo Badge -->
+        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-pink-500/30 p-0.5 bg-white shadow-lg mx-auto mb-5">
+          <img src="assets/images/logo.png" alt="Shani Design Studio" class="w-full h-full object-cover rounded-full">
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 mb-4 leading-tight" data-i18n="footerCtaHeading">
+          کیا آپ اپنے برانڈ کو ایک شاندار روپ دینے کے لیے تیار ہیں؟
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto" data-i18n="footerCtaDesc">
+          117+ پیشہ ورانہ ڈیزائن سروسز میں سے اپنی پسندیدہ سروس کارٹ میں شامل کریں اور آسانی سے آرڈر بُک کریں۔
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3.5 mb-10">
+          <a 
+            href="#servicesExplorerArea" 
+            class="btn-pink-pill px-7 py-3 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span data-i18n="heroExploreBtn">Select Services</span>
+          </a>
+
+          <button 
+            onclick="openOrderModalFromBasket()" 
+            class="btn-white-pill px-7 py-3 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm"
+          >
+            <span data-i18n="cartBtn">Cart</span>
+            <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Clean Minimal Copyright (Replaces bottom bar) -->
+        <p class="text-xs text-slate-400 font-medium" data-i18n="footerText">
+          © 2026 Shani Design Studio - We Design Your Ideas. All rights reserved.
+        </p>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found | Shani Design Studio</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink-gradient: linear-gradient(135deg, #ff2a7a 0%, #e6005c 100%);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ffffff;
+      color: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* ==================== 404 SWINGING LAMP ANIMATION ==================== */
+    .lamp-scene-container {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    /* Synchronized Lamp Swing & Spotlight Sweep */
+    @keyframes lampHeadSwing {
+      0%, 100% {
+        transform: rotate(-16deg);
+      }
+      50% {
+        transform: rotate(18deg);
+      }
+    }
+
+    @keyframes spotlightMove {
+      0%, 100% {
+        transform: translateX(-105px);
+      }
+      50% {
+        transform: translateX(105px);
+      }
+    }
+
+    .lamp-head-motion {
+      transform-origin: 208px 73px;
+      animation: lampHeadSwing 3.6s ease-in-out infinite;
+    }
+
+    .spotlight-motion {
+      animation: spotlightMove 3.6s ease-in-out infinite;
+    }
+
+    /* Hot Pink Gradient Pill Button */
+    .btn-pink-pill {
+      background: var(--pink-gradient);
+      color: #ffffff !important;
+      box-shadow: 0 8px 20px -3px rgba(255, 42, 122, 0.4);
+      transition: all 0.2s ease;
+    }
+    .btn-pink-pill:hover {
+      opacity: 0.95;
+      box-shadow: 0 10px 24px -3px rgba(255, 42, 122, 0.5);
+      transform: translateY(-1px);
+    }
+    .btn-pink-pill:active {
+      transform: scale(0.98);
+    }
+
+    /* Secondary White Pill Button */
+    .btn-white-pill {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+    }
+    .btn-white-pill:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <div class="w-full max-w-xl mx-auto text-center">
+    
+    <!-- Studio Header / Logo -->
+    <a href="index.html" class="inline-flex items-center gap-2 mb-4 group">
+      <div class="w-9 h-9 rounded-full overflow-hidden border border-pink-500/20 p-0.5 bg-white shadow-sm">
+        <img src="assets/images/logo.png" alt="Shani Design Studio" class="w-full h-full object-cover rounded-full">
+      </div>
+      <span class="font-bold text-slate-800 text-sm tracking-tight group-hover:text-pink-600 transition-colors">
+        Shani Design Studio
+      </span>
+    </a>
+
+    <!-- Animated Swinging Lamp SVG Scene (Exact match to uploaded screenshots) -->
+    <div class="lamp-scene-container mb-6">
+      <svg viewBox="0 0 680 340" class="w-full h-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- ClipPath for the swinging spotlight beam -->
+          <clipPath id="spotlightBeamClip">
+            <g class="spotlight-motion">
+              <!-- Smooth tall rounded spotlight shape covering full height of 404 numbers -->
+              <ellipse cx="440" cy="195" rx="85" ry="120" transform="rotate(12 440 195)" />
+            </g>
+          </clipPath>
+        </defs>
+
+        <!-- Table / Ground Line -->
+        <line x1="50" y1="260" x2="630" y2="260" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+        <!-- BASE 404 NUMBERS (Dark Navy Unlit) -->
+        <text x="440" y="255" text-anchor="middle" font-size="145" font-weight="900" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" fill="#36394c" letter-spacing="4">404</text>
+
+        <!-- ILLUMINATED 404 NUMBERS (Pure White with Crisp Light-Gray Outline, Clipped to Spotlight) -->
+        <g clip-path="url(#spotlightBeamClip)">
+          <!-- Table highlight line under light -->
+          <line x1="50" y1="260" x2="630" y2="260" stroke="#cbd5e1" stroke-width="4.5" stroke-linecap="round" />
+          <!-- White 404 Text -->
+          <text x="440" y="255" text-anchor="middle" font-size="145" font-weight="900" font-family="'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" letter-spacing="4">404</text>
+        </g>
+
+        <!-- STATIC LAMP STAND & BASE -->
+        <!-- Dome Base sitting on the table line -->
+        <path d="M 85 260 A 48 38 0 0 1 181 260 Z" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linejoin="round" />
+
+        <!-- Vertical Stem -->
+        <line x1="133" y1="222" x2="133" y2="105" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+        <!-- Center Pivot Joint -->
+        <circle cx="133" cy="148" r="9" fill="#36394c" />
+
+        <!-- Diagonal Crossbar -->
+        <line x1="80" y1="201" x2="208" y2="73" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+        <!-- Upper Pivot Joint -->
+        <circle cx="208" cy="73" r="9" fill="#36394c" />
+
+        <!-- SWINGING LAMP HEAD (Rotates naturally from Upper Pivot 208, 73) -->
+        <g class="lamp-head-motion">
+          <!-- Connecting neck from upper pivot (208, 73) -->
+          <line x1="208" y1="73" x2="222" y2="87" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- Lamp Shade Top Cap Rims -->
+          <line x1="214" y1="81" x2="230" y2="93" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+          <line x1="210" y1="86" x2="234" y2="98" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- Trapezoid Bell Shade (Pointing Down & Right towards 404) -->
+          <polygon points="213,91 231,104 266,145 238,168" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linejoin="round" />
+
+          <!-- Shade Bottom Opening Rim -->
+          <line x1="238" y1="168" x2="266" y2="145" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+
+          <!-- Light Bulb peeking out from the opening -->
+          <path d="M 246 162 A 10 10 0 0 0 258 152" fill="#ffffff" stroke="#36394c" stroke-width="4.5" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Caption directly under table (Exact match to screenshots) -->
+    <h1 class="text-lg sm:text-xl font-semibold text-slate-600 mb-2 font-['Outfit']" id="errorCaption">
+      We can`t find page you are looking for
+    </h1>
+
+    <!-- Detail Info -->
+    <p class="text-xs sm:text-sm text-slate-400 mb-8 max-w-md mx-auto" id="errorSubCaption">
+      The requested link does not exist, or your network connection may have been disconnected.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center justify-center gap-3">
+      <a 
+        href="index.html" 
+        class="btn-pink-pill px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold inline-flex items-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Home</span>
+      </a>
+
+      <button 
+        onclick="window.location.reload()" 
+        class="btn-white-pill px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold inline-flex items-center gap-2"
+      >
+        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        <span>Retry</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // Offline detection
+    window.addEventListener('offline', () => {
+      document.getElementById('errorCaption').textContent = 'No Internet Connection';
+      document.getElementById('errorSubCaption').textContent = 'You are currently offline. Please check your network connection and retry.';
+    });
+
+    window.addEventListener('online', () => {
+      document.getElementById('errorCaption').textContent = 'Connection Restored!';
+      document.getElementById('errorSubCaption').textContent = 'You are back online. Redirecting to home...';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
